@@ -8,7 +8,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # add the executable
-add_executable(Primes src/main.cpp src/primes.cpp)
+add_executable(Primes 
+               src/main.cpp 
+               src/primes.cpp
+               src/prime_cache.cpp
+               )
 
 target_include_directories(Primes PUBLIC
                            "include"
