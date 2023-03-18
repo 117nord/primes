@@ -3,6 +3,7 @@
 #include <limits>
 #include <cmath>
 #include <ctime>
+#include "primes.hpp"
 
 // Take first prime 2, and mark all multiples of it through successive additions.
 // Next unmarked number in set is also prime; it has no factors smaller than itself. If it had one, it would be marked as a multiple. 
@@ -23,11 +24,18 @@
 // To advance to the next unmarked prime, since primes > 2 can't be even, we can search for it by adding 2 so that we only look at odd numbers. No sense looking
 // up an even one to see if it is marked.
 
-static std::clock_t steptime = std::clock();
-constexpr size_t size = 1L + std::numeric_limits<unsigned int>::max();
-static std::bitset<size> candidates;
-
 int main() {
+    Primes primes {(1L + std::numeric_limits<unsigned int>::max()) * 4L};
+
+    std::size_t n {primes.size() - 1};
+
+    while (!primes.is_prime(n)) {
+        std::cout << n << " is not prime" << std::endl;
+        n--;
+    }
+    std::cout << n << " is prime" << std::endl;
+
+/*
     std::cout << "initialization time:    " << std::clock() - steptime << " ticks" << std::endl ;
     steptime = std::clock();
 
@@ -70,4 +78,5 @@ int main() {
     std::cout << "found " << count << " primes, density is " << density << "%" << std::endl;
 
     //std::cout << candidates;
+    */
 }

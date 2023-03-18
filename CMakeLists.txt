@@ -10,4 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # add the executable
 add_executable(compute 
                src/compute_primes.cpp 
+               src/primes.cpp
                )
+
+target_include_directories(compute PUBLIC
+                           "include")
